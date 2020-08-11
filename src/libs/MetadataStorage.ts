@@ -4,6 +4,8 @@ export class MetadataStorage {
 
   [k: string]: any;
 
+  static $self: MetadataStorage;
+
 
   static $() {
     if (!this.$self) {
