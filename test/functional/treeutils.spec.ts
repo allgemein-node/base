@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
+import {suite, test} from '@testdeck/mocha';
 import 'reflect-metadata';
 import {TreeUtils} from '../../src/libs/utils/TreeUtils';
 import {inspect} from 'util';
@@ -26,7 +26,13 @@ class TreeutilsSpec {
 
     expect(parts).to.have.length(15);
     expect(parts[0]).to.deep.include({value: 'y', key: 'str', index: null, isLeaf: true, location: ['str']});
-    expect(parts[1]).to.deep.include({value: {z: 'entry', w: 1}, key: 'obj', index: null, isLeaf: false, location: ['obj']});
+    expect(parts[1]).to.deep.include({
+      value: {z: 'entry', w: 1},
+      key: 'obj',
+      index: null,
+      isLeaf: false,
+      location: ['obj']
+    });
     console.log(parts[2]);
 
   }
