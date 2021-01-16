@@ -153,7 +153,9 @@ export class PlatformUtils {
       }
       str = fn(str);
       for (const _m in cache) {
-        str = str.replace(_m, cache[_m]);
+        if (cache.hasOwnProperty(_m)) {
+          str = str.replace(_m, cache[_m]);
+        }
       }
     }
     return str;
@@ -273,7 +275,7 @@ export class PlatformUtils {
               if (err) {
                 return reject(err);
               }
-              resolve();
+              resolve(null);
             });
           }).catch(reject);
         });

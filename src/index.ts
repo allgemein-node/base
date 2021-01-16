@@ -1,4 +1,4 @@
-export * from './browser';
+export * from './shared';
 
 
 export * from './libs/utils/ClassLoader';

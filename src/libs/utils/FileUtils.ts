@@ -96,7 +96,7 @@ export class FileUtils {
             if (err) {
               return reject(err);
             }
-            resolve();
+            resolve(null);
           });
         }
       });

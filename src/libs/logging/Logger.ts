@@ -1,41 +1,33 @@
 import * as _ from 'lodash';
-import {ILoggerApi} from "./ILoggerApi";
-import {ConsoleLogger} from "./ConsoleLogger";
-import {C_CONSOLE, C_DEBUG, C_DEFAULT, C_ERROR, C_INFO, C_TRACE, C_WARN} from "../Constants";
-import {ILoggerOptions} from "./ILoggerOptions";
+import {ILoggerApi} from './ILoggerApi';
+import {ConsoleLogger} from './ConsoleLogger';
+import {C_CONSOLE, C_DEBUG, C_DEFAULT, C_ERROR, C_INFO, C_TRACE, C_WARN} from '../Constants';
+import {ILoggerOptions} from './ILoggerOptions';
 
 
 const DEFAULT: ILoggerOptions = {
   context: C_DEFAULT,
   type: C_CONSOLE
 
-}
+};
 
 export class Logger {
-
-  private static _self: Logger;
-
-  private loggerTypes: { [k: string]: Function } = {
-    console: ConsoleLogger
-  }
-
-  private instances: { [key: string]: ILoggerApi } = {};
 
   private constructor() {
 
   }
 
-  getInstances() {
-    return this.instances;
-  }
+  private static _self: Logger;
 
-  getTypes() {
-    return this.loggerTypes;
-  }
+  private loggerTypes: { [k: string]: Function } = {
+    console: ConsoleLogger
+  };
+
+  private instances: { [key: string]: ILoggerApi } = {};
 
   static $() {
     if (!this._self) {
-      this._self = new Logger()
+      this._self = new Logger();
     }
     return this._self;
   }
@@ -80,6 +72,14 @@ export class Logger {
 
   static trace(...msg: any[]) {
     this.log(C_TRACE, ...msg);
+  }
+
+  getInstances() {
+    return this.instances;
+  }
+
+  getTypes() {
+    return this.loggerTypes;
   }
 
 }

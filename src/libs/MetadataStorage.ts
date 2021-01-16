@@ -2,7 +2,9 @@ import * as _ from 'lodash';
 
 export class MetadataStorage {
 
+
   [k: string]: any;
+
 
   static $self: MetadataStorage;
 
@@ -24,12 +26,17 @@ export class MetadataStorage {
     this.$self = null;
   }
 
-
-  key(k: string): any[] {
-    if (!_.has(this, k)) {
-      this[k] = [];
+  /**
+   * Create or get a cached key by object / array
+   *
+   * @param key
+   * @param initial
+   */
+  key(key: string, initial: any = []): any[] {
+    if (!_.has(this, key)) {
+      this[key] = initial;
     }
-    return this[k];
+    return this[key];
   }
 
 

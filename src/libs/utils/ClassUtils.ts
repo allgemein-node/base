@@ -1,5 +1,5 @@
-import * as _ from "lodash";
-import {__SOURCE__} from "../Constants";
+import * as _ from 'lodash';
+import {__SOURCE__} from '../Constants';
 
 export class ClassUtils {
   static getClassName(klass: string | Function) {

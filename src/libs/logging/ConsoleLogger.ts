@@ -1,5 +1,5 @@
-import {AbstractLogger} from "./AbstractLogger";
-import {C_ERROR, C_TRACE, C_WARN} from "../Constants";
+import {AbstractLogger} from './AbstractLogger';
+import {C_ERROR, C_TRACE, C_WARN} from '../Constants';
 
 
 export class ConsoleLogger extends AbstractLogger {
@@ -12,12 +12,12 @@ export class ConsoleLogger extends AbstractLogger {
     const ll = this.getLevel();
 
     if (l && l.nr <= ll.nr) {
-      if (l.name == C_ERROR) {
+      if (l.name === C_ERROR) {
         console.error(...msg);
-      } else if (l.name == C_WARN) {
+      } else if (l.name === C_WARN) {
         console.warn(...msg);
-      } else if (l.name == C_TRACE) {
-        console.trace(...msg);
+      } else if (l.name === C_TRACE) {
+        console.log(...msg);
       } else {
         console.log(...msg);
       }

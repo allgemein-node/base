@@ -1,8 +1,8 @@
-import {ILogLevel} from "./ILogLevel";
+import {ILogLevel} from './ILogLevel';
 
 export interface ILoggerApi {
 
-  isEnabled(set?:boolean):boolean;
+  isEnabled(set?: boolean): boolean;
 
   log(level: number | string, ...msg: any[]): void;
 
@@ -18,6 +18,6 @@ export interface ILoggerApi {
 
   getLevel(): ILogLevel;
 
-  setLevel(level:number | string): void;
+  setLevel(level: number | string): void;
 
 }
