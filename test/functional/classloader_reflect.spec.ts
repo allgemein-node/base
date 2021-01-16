@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import {__SOURCE__, ClassLoader} from '../../src';
 
 
-@suite('test/classloading/reflect')
+@suite('classloading/reflect')
 class ClassloaderReflectSpec {
 
   @test

@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {ClassLoader} from '../../src';
 
 
-@suite('test/classloading')
+@suite('classloading/classloader')
 class ClassloaderSpec {
 
   @test

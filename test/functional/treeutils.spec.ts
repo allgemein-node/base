@@ -2,15 +2,14 @@ import {expect} from 'chai';
 import {suite, test} from '@testdeck/mocha';
 import 'reflect-metadata';
 import {TreeUtils} from '../../src/libs/utils/TreeUtils';
-import {inspect} from 'util';
 import {JsonUtils} from '../../src/libs/utils/JsonUtils';
 
 
-@suite('functional/treeutils')
+@suite('treeutils')
 class TreeutilsSpec {
 
   @test
-  async 'tree walker'() {
+  async 'tree sync walker'() {
     const tree: any = {
       str: 'y',
       obj: {z: 'entry', w: 1},
@@ -33,14 +32,42 @@ class TreeutilsSpec {
       isLeaf: false,
       location: ['obj']
     });
-    console.log(parts[2]);
+    // console.log(parts[2]);
+
+  }
+
+  @test
+  async 'tree async walker'() {
+    const tree: any = {
+      str: 'y',
+      obj: {z: 'entry', w: 1},
+      arrEmpty: [],
+      arr: [1, '2', {inArr: true}],
+      subarr: [{inArr: [{insub: true}]}]
+    };
+
+    const parts: any[] = [];
+    await TreeUtils.walkAsync(tree, x => {
+      parts.push(x);
+    });
+
+    expect(parts).to.have.length(15);
+    expect(parts[0]).to.deep.include({value: 'y', key: 'str', index: null, isLeaf: true, location: ['str']});
+    expect(parts[1]).to.deep.include({
+      value: {z: 'entry', w: 1},
+      key: 'obj',
+      index: null,
+      isLeaf: false,
+      location: ['obj']
+    });
+    // console.log(parts[2]);
 
   }
 
   @test
   async 'json date recorvery'() {
 
-    const dates = [];
+    // const dates = [];
 
     const tree: any = {
       str: new Date(1100, 2, 3),
@@ -51,10 +78,10 @@ class TreeutilsSpec {
     };
 
     let c = JSON.parse(JSON.stringify(tree));
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     c = JsonUtils.correctTypes(c);
 
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     expect(c).to.be.deep.eq(tree);
   }
 
@@ -69,17 +96,17 @@ class TreeutilsSpec {
     };
 
     let c = JSON.parse(JSON.stringify(tree));
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     c = JsonUtils.correctTypes(c);
 
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     expect(c).to.be.deep.eq(tree);
 
     c = JSON.parse(JSON.stringify(null));
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     c = JsonUtils.correctTypes(c);
 
-    console.log(inspect(c, null, 10));
+    // console.log(inspect(c, null, 10));
     expect(c).to.be.deep.eq(null);
   }
 }

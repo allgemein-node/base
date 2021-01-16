@@ -5,7 +5,7 @@ import {C_INFO, ConsoleLogger, Logger} from '../../src';
 
 const stdMocks = require('std-mocks');
 
-@suite('test/functional/logging')
+@suite('logging')
 class LoggingSpec {
 
   @test
