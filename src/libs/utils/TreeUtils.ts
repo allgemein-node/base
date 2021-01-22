@@ -19,7 +19,7 @@ export class TreeUtils {
       }
       if (_.isArray(obj)) {
         obj.forEach((el: any, j: number) => {
-          const isLeaf = !_.isArray(el) && !_.isPlainObject(el);
+          const isLeaf = !_.isArray(el) && !_.isObjectLike(el);
           fn({
             value: el,
             key: key,
@@ -32,9 +32,9 @@ export class TreeUtils {
             walk(el, j, el, key ? [...location, ...[key], ...[j]] : [...location, ...[j]]);
           }
         });
-      } else if (_.isPlainObject(obj)) {
+      } else if (_.isObjectLike(obj)) {
         _.keys(obj).forEach(_key => {
-          const isLeaf = !_.isArray(obj[_key]) && !_.isPlainObject(obj[_key]);
+          const isLeaf = !_.isArray(obj[_key]) && !_.isObjectLike(obj[_key]);
           fn({
             value: obj[_key],
             key: _key,
@@ -84,7 +84,7 @@ export class TreeUtils {
             await walk(el, j, el, key ? [...location, ...[key], ...[j]] : [...location, ...[j]]);
           }
         }
-      } else if (_.isPlainObject(obj)) {
+      } else if (_.isObjectLike(obj)) {
         for (const _key of _.keys(obj)) {
           const isLeaf = !_.isArray(obj[_key]) && !_.isObjectLike(obj[_key]);
           await fn({
