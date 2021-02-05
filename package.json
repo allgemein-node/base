@@ -1,8 +1,11 @@
 {
   "name": "@allgemein/base",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Library for commons moduls.",
-  "main": "index.js",
+  "main": "./index.js",
+  "browser": {
+    "./index.js": "./browser.js"
+  },
   "directories": {
     "doc": "docs/de"
   },
@@ -20,7 +23,6 @@
     "commons",
     "typescript"
   ],
-  "browser": "browser.js",
   "bugs": {
     "url": "https://github.com/allgemein-node/base/issues"
   },
