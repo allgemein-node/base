@@ -1,8 +1,8 @@
 import {expect} from 'chai';
 import {suite, test} from '@testdeck/mocha';
 import 'reflect-metadata';
-import {TreeUtils} from '../../src/libs/utils/TreeUtils';
-import {JsonUtils} from '../../src/libs/utils/JsonUtils';
+import {TreeUtils} from '../../src/utils/TreeUtils';
+import {JsonUtils} from '../../src/utils/JsonUtils';
 
 
 @suite('treeutils')
