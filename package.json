@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/allgemein-node/base#readme",
   "devDependencies": {
-    "@allgemein/packaging": "^1.1.0",
+    "@allgemein/packaging": "^1.1.1",
     "@testdeck/mocha": "^0.1.2",
     "@types/chai": "^4.2.18",
     "@types/expect": "^24.3.0",
