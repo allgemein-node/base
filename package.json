@@ -1,6 +1,6 @@
 {
   "name": "@allgemein/base",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Library for commons moduls.",
   "main": "./index.js",
   "private": true,
