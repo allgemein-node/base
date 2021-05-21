@@ -27,7 +27,7 @@ export {
 } from './shared';
 
 
-export {ClassLoader} from './libs/utils/ClassLoader';
-export {PlatformUtils} from './libs/utils/PlatformUtils';
-export {FileUtils} from './libs/utils/FileUtils';
+export {ClassLoader} from './utils/ClassLoader';
+export {PlatformUtils} from './utils/PlatformUtils';
+export {FileUtils} from './utils/FileUtils';
 

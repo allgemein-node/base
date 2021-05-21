@@ -1,8 +1,8 @@
-import * as _ from 'lodash';
-import {ILoggerApi} from "./ILoggerApi";
-import {ILogLevel} from "./ILogLevel";
-import {C_DEBUG, C_ERROR, C_INFO, C_TRACE, C_WARN} from "../Constants";
-import {ILoggerOptions} from "./ILoggerOptions";
+import {isNull, isNumber, find} from 'lodash';
+import {ILoggerApi} from './ILoggerApi';
+import {ILogLevel} from './ILogLevel';
+import {C_DEBUG, C_ERROR, C_INFO, C_TRACE, C_WARN} from '../Constants';
+import {ILoggerOptions} from './ILoggerOptions';
 
 
 export abstract class AbstractLogger implements ILoggerApi {
@@ -36,7 +36,7 @@ export abstract class AbstractLogger implements ILoggerApi {
   }
 
   isEnabled(set: boolean = null): boolean {
-    if (!_.isNull(set)) {
+    if (!isNull(set)) {
       this._enable = set;
     }
     return this._enable;
@@ -51,7 +51,7 @@ export abstract class AbstractLogger implements ILoggerApi {
   }
 
   findLevel(m: string | number) {
-    return this.levels.find(x => _.isNumber(m) ? x.nr == m : x.name.toLowerCase() == m.toLowerCase())
+    return this.levels.find(x => isNumber(m) ? x.nr === m : x.name.toLowerCase() === m.toLowerCase());
   }
 
   addLevel(name: string) {
@@ -60,7 +60,7 @@ export abstract class AbstractLogger implements ILoggerApi {
 
 
   getLevel(): ILogLevel {
-    return _.find(this.levels, l => l.nr == this.logLevel);
+    return find(this.levels, l => l.nr === this.logLevel);
   }
 
   setLevel(level: number | string): void {
@@ -68,7 +68,7 @@ export abstract class AbstractLogger implements ILoggerApi {
     if (l) {
       this.logLevel = l.nr;
     } else {
-      throw new Error("can't find given log level entry " + level)
+      throw new Error('can\'t find given log level entry ' + level);
     }
   }
 

@@ -1,4 +1,5 @@
-import * as _ from 'lodash';
+import {has} from 'lodash';
+
 
 export class MetadataStorage {
 
@@ -33,7 +34,7 @@ export class MetadataStorage {
    * @param initial
    */
   key(key: string, initial: any = []): any[] {
-    if (!_.has(this, key)) {
+    if (!has(this, key)) {
       this[key] = initial;
     }
     return this[key];
@@ -41,12 +42,12 @@ export class MetadataStorage {
 
 
   has(path: string) {
-    return _.has(this, path);
+    return has(this, path);
   }
 
 
   get(key: string) {
-    if (_.has(this, key)) {
+    if (has(this, key)) {
       return this[key];
     }
     return undefined;
@@ -54,7 +55,7 @@ export class MetadataStorage {
 
 
   remove(key: string) {
-    if (_.has(this, key)) {
+    if (has(this, key)) {
       delete this[key];
     }
   }

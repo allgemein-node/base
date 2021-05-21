@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import {get} from 'lodash';
 import {ILoggerApi} from './ILoggerApi';
 import {ConsoleLogger} from './ConsoleLogger';
 import {C_CONSOLE, C_DEBUG, C_DEFAULT, C_ERROR, C_INFO, C_TRACE, C_WARN} from '../Constants';
@@ -37,7 +37,7 @@ export class Logger {
   }
 
   static getLogger(opts: ILoggerOptions = DEFAULT) {
-    if (!this.$().instances[opts.context] || _.get(opts, 'override', false)) {
+    if (!this.$().instances[opts.context] || get(opts, 'override', false)) {
       const type = this.$().loggerTypes[opts.type];
       if (type) {
         this.$().instances[opts.context] = Reflect.construct(type, [opts]);

@@ -5,7 +5,7 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import * as _ from 'lodash';
+import {isString} from 'lodash';
 import {FileUtils} from './FileUtils';
 
 
@@ -35,7 +35,7 @@ export class PlatformUtils {
    * set workdir
    */
   static setWorkDir(workdir: string) {
-    if (_.isString(workdir)) {
+    if (isString(workdir)) {
       this.workdir = PlatformUtils.pathResolve(workdir);
     } else {
       this.workdir = null;

@@ -4,7 +4,7 @@
  *
  */
 
-import * as _ from 'lodash';
+import {isNull, isNumber, find, isString, snakeCase, concat, isArray, keys} from 'lodash';
 import {PlatformUtils} from './PlatformUtils';
 import {StringOrFunction} from '../Constants';
 import {FileUtils} from './FileUtils';
@@ -21,7 +21,7 @@ export class ClassLoader {
   static importClassesFromAny(o: StringOrFunction[]): Function[] {
     let klasses: Function[] = [];
     o.forEach(x => {
-      if (_.isString(x)) {
+      if (isString(x)) {
         const _x = PlatformUtils.pathNormilize(PlatformUtils.pathResolve(x));
         const exported = ClassLoader.importClassesFromDirectories([_x]);
         klasses = klasses.concat.apply(klasses, exported);
@@ -36,7 +36,7 @@ export class ClassLoader {
 
   static importClassesFromAnyAsync(o: StringOrFunction[]): Promise<Function[]> {
     return Promise.all(o.map(async x => {
-      if (_.isString(x)) {
+      if (isString(x)) {
         const _x = PlatformUtils.pathNormilize(PlatformUtils.pathResolve(x));
         return ClassLoader.importClassesFromDirectoriesAsync([_x]);
       } else if (x instanceof Function) {
@@ -45,7 +45,7 @@ export class ClassLoader {
         throw new Error('TODO: unknown ' + x);
       }
     })).then(x => {
-      return _.concat([], ...x);
+      return concat([], ...x);
     });
   }
 
@@ -152,7 +152,7 @@ export class ClassLoader {
 
 
   private static filterClasses(exported: { loaded: any, source: string } | { loaded: any, source: string }[], allLoaded: Function[]) {
-    if (_.isArray(exported)) {
+    if (isArray(exported)) {
       exported.forEach(e => this.filterClasses(e, allLoaded));
     } else {
       if (exported.loaded instanceof Function) {
@@ -163,7 +163,7 @@ export class ClassLoader {
         }
         allLoaded.push(exported.loaded);
       } else if (exported.loaded instanceof Object) {
-        _.keys(exported.loaded).forEach(key => this.filterClasses({
+        keys(exported.loaded).forEach(key => this.filterClasses({
           loaded: exported.loaded[key],
           source: exported.source
         }, allLoaded));

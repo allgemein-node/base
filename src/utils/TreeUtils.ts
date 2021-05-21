@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import {isArray, isObjectLike, keys} from 'lodash';
 
 export interface WalkValues {
   value: any;
@@ -17,9 +17,9 @@ export class TreeUtils {
       if (obj === null || obj === undefined) {
         return;
       }
-      if (_.isArray(obj)) {
+      if (isArray(obj)) {
         obj.forEach((el: any, j: number) => {
-          const isLeaf = !_.isArray(el) && !_.isObjectLike(el);
+          const isLeaf = !isArray(el) && !isObjectLike(el);
           fn({
             value: el,
             key: key,
@@ -32,9 +32,9 @@ export class TreeUtils {
             walk(el, j, el, key ? [...location, ...[key], ...[j]] : [...location, ...[j]]);
           }
         });
-      } else if (_.isObjectLike(obj)) {
-        _.keys(obj).forEach(_key => {
-          const isLeaf = !_.isArray(obj[_key]) && !_.isObjectLike(obj[_key]);
+      } else if (isObjectLike(obj)) {
+        keys(obj).forEach(_key => {
+          const isLeaf = !isArray(obj[_key]) && !isObjectLike(obj[_key]);
           fn({
             value: obj[_key],
             key: _key,
@@ -68,10 +68,10 @@ export class TreeUtils {
       if (obj === null || obj === undefined) {
         return;
       }
-      if (_.isArray(obj)) {
+      if (isArray(obj)) {
         for (let j = 0; j < obj.length; j++) {
           const el = obj[j];
-          const isLeaf = !_.isArray(el) && !_.isObjectLike(el);
+          const isLeaf = !isArray(el) && !isObjectLike(el);
           await fn({
             value: el,
             key: key,
@@ -84,9 +84,9 @@ export class TreeUtils {
             await walk(el, j, el, key ? [...location, ...[key], ...[j]] : [...location, ...[j]]);
           }
         }
-      } else if (_.isObjectLike(obj)) {
-        for (const _key of _.keys(obj)) {
-          const isLeaf = !_.isArray(obj[_key]) && !_.isObjectLike(obj[_key]);
+      } else if (isObjectLike(obj)) {
+        for (const _key of keys(obj)) {
+          const isLeaf = !isArray(obj[_key]) && !isObjectLike(obj[_key]);
           await fn({
             value: obj[_key],
             key: _key,

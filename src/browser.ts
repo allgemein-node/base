@@ -25,4 +25,4 @@ export {
   __SOURCE__,
   C_DEFAULT
 } from './shared';
-export {PlatformUtils} from './libs/utils/PlatformUtilsBrowser';
+export {PlatformUtils} from './utils/PlatformUtilsBrowser';

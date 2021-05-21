@@ -2,8 +2,7 @@
  * see https://github.com/typeorm/typeorm/blob/master/src/platform/PlatformTools.ts
  */
 
-
-import * as _ from 'lodash';
+import {isString} from 'lodash';
 import {NotSupportedError} from '../exceptions/NotSupportedError';
 
 
@@ -33,7 +32,7 @@ export class PlatformUtils {
    * set workdir
    */
   static setWorkDir(workdir: string) {
-    if (_.isString(workdir)) {
+    if (isString(workdir)) {
       this.workdir = PlatformUtils.pathResolve(workdir);
     } else {
       this.workdir = null;

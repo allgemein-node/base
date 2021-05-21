@@ -1,13 +1,13 @@
-import * as _ from 'lodash';
+import {isNull, isNumber, find, isString, snakeCase, concat, isArray, keys, isFunction, isObject} from 'lodash';
 import {__SOURCE__} from '../Constants';
 
 export class ClassUtils {
   static getClassName(klass: string | Function) {
-    if (_.isString(klass)) {
+    if (isString(klass)) {
       return klass;
-    } else if (_.isFunction(klass)) {
+    } else if (isFunction(klass)) {
       return klass.name;
-    } else if (_.isObject(klass)) {
+    } else if (isObject(klass)) {
       return klass.constructor.name;
     } else {
       throw new Error('class not found!');
@@ -16,12 +16,12 @@ export class ClassUtils {
 
 
   static getFunction(klass: string | Function) {
-    if (_.isString(klass)) {
+    if (isString(klass)) {
       // TODO create error class
       throw new Error('class not found! 02');
-    } else if (_.isFunction(klass)) {
+    } else if (isFunction(klass)) {
       return klass;
-    } else if (_.isObject(klass)) {
+    } else if (isObject(klass)) {
       return klass.constructor;
     } else {
       // TODO create error class
