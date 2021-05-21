@@ -23,6 +23,7 @@ export {
   C_DEBUG,
   C_CONSOLE,
   __SOURCE__,
-  C_DEFAULT
+  C_DEFAULT,
+  MetadataStorage
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

@@ -2,6 +2,7 @@ export {
   C_DEFAULT, __SOURCE__, C_CONSOLE, C_DEBUG, C_ERROR, C_INFO, C_TRACE, C_WARN, ISO8601, StringOrFunction
 } from './Constants';
 export {MetaArgs} from './MetaArgs';
+export {MetadataStorage} from './MetadataStorage';
 
 export {AbstractLogger} from './logging/AbstractLogger';
 export {ConsoleLogger} from './logging/ConsoleLogger';
