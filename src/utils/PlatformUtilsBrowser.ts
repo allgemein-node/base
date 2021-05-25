@@ -48,6 +48,11 @@ export class PlatformUtils {
     throw new NotSupportedError('not supported');
   }
 
+  static loadAsync(name: string): Promise<any> {
+    throw new NotSupportedError('not supported');
+  }
+
+
   /**
    * Normalizes given path. Does "path.normalize".
    */
@@ -88,6 +93,10 @@ export class PlatformUtils {
    * Synchronously checks if file exist. Does "fs.existsSync".
    */
   static fileExist(pathStr: string): boolean {
+    throw new NotSupportedError('not supported');
+  }
+
+  static fileExistAsync(pathStr: string): Promise<boolean> {
     throw new NotSupportedError('not supported');
   }
 

@@ -76,6 +76,34 @@ export class PlatformUtils {
   }
 
   /**
+   * Loads ("require"-s) given file or package.
+   * This operation only supports on node platform
+   */
+  static loadAsync(name: string): Promise<any> {
+
+    // if name is not absolute or relative, then try to load package from the node_modules of the directory we are currenly in
+    // this is useful when we are using typeorm package globally installed and it accesses drivers
+    // that are not installed globally
+
+    try {
+      if (this.fileExist(name)) {
+        const ext = this.pathExtname(name);
+        if (ext) {
+          // name without ext
+          name = name.replace(ext, '');
+        }
+      }
+      return import(name);
+    } catch (err) {
+      if (!path.isAbsolute(name) && name.substr(0, 2) !== './' && name.substr(0, 3) !== '../') {
+        return import(path.resolve(process.cwd() + '/node_modules/' + name));
+      }
+
+      throw err;
+    }
+  }
+
+  /**
    * Normalizes given path. Does "path.normalize".
    */
   static pathNormilize(pathStr: string): string {
@@ -130,6 +158,21 @@ export class PlatformUtils {
    */
   static fileExist(pathStr: string): boolean {
     return fs.existsSync(pathStr);
+  }
+
+  /**
+   * Synchronously checks if file exist. Does "fs.existsSync".
+   */
+  static fileExistAsync(pathStr: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      fs.stat(pathStr, err => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(null);
+        }
+      });
+    });
   }
 
   /**

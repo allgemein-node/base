@@ -4,7 +4,7 @@
  *
  */
 
-import {isNull, isNumber, find, isString, snakeCase, concat, isArray, keys} from 'lodash';
+import {concat, isArray, isString, keys} from 'lodash';
 import {PlatformUtils} from './PlatformUtils';
 import {StringOrFunction} from '../Constants';
 import {FileUtils} from './FileUtils';
@@ -86,18 +86,18 @@ export class ClassLoader {
       allFiles = allFiles.concat(...r);
     });
 
-    const dirs: { loaded: any, source: string }[] = allFiles
+    const dirs: { loaded: any, source: string }[] = await Promise.all(allFiles
       .filter(file => {
         const dtsExtension = file.substring(file.length - 5, file.length);
         return formats.indexOf(PlatformUtils.pathExtname(file)) !== -1 && dtsExtension !== '.d.ts';
       })
-      .map(file => {
+      .map(async file => {
         const cls = {
           source: file,
-          loaded: PlatformUtils.load(PlatformUtils.pathResolve(file))
+          loaded: await PlatformUtils.loadAsync(PlatformUtils.pathResolve(file))
         };
         return cls;
-      });
+      }));
     return this.filterClasses(dirs, []); // this.loadFileClasses(dirs, []);
   }
 
