@@ -64,12 +64,12 @@ export class FileUtils {
   }
 
   static writeFileSync(filename: string, content: Buffer | string,
-                       options?: fs.WriteFileOptions | string | null): void {
+                       options?: fs.WriteFileOptions): void {
     return fs.writeFileSync(filename, content, options);
   }
 
   static writeFile(filename: string, content: string | Buffer,
-                   options?: fs.WriteFileOptions | string | null): Promise<void> {
+                   options?: fs.WriteFileOptions): Promise<void> {
     return new Promise((resolve, reject) => {
       fs.writeFile(filename, content, options, (err) => {
         if (err) {
