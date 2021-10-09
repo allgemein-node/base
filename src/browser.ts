@@ -24,6 +24,8 @@ export {
   C_CONSOLE,
   __SOURCE__,
   C_DEFAULT,
-  MetadataStorage
+  MetadataStorage,
+  Semaphore,
+  LockFactory
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

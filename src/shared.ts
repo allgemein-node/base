@@ -20,4 +20,8 @@ export {ClassUtils} from './utils/ClassUtils';
 export {CryptUtils} from './utils/CryptUtils';
 export {TreeUtils} from './utils/TreeUtils';
 export {JsonUtils} from './utils/JsonUtils';
+export {Serializer} from './utils/Serializer';
+
+export {LockFactory} from './locking/LockFactory';
+export {Semaphore} from './locking/Semaphore';
 

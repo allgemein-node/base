@@ -24,7 +24,9 @@ export {
   C_CONSOLE,
   __SOURCE__,
   C_DEFAULT,
-  MetadataStorage
+  MetadataStorage,
+  LockFactory,
+  Semaphore
 } from './shared';
 
 

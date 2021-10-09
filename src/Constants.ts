@@ -1,6 +1,8 @@
-export type StringOrFunction = string | Function
+export type StringOrFunction = string | Function;
 
 export const __SOURCE__ = '__SOURCE__';
+export const __CLASS__ = '__CLASS__';
+
 
 export const C_DEFAULT = 'default';
 export const C_CONSOLE = 'console';
