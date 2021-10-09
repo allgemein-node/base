@@ -26,6 +26,7 @@ export {
   C_DEFAULT,
   MetadataStorage,
   Semaphore,
-  LockFactory
+  LockFactory,
+  Serializer
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

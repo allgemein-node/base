@@ -26,7 +26,8 @@ export {
   C_DEFAULT,
   MetadataStorage,
   LockFactory,
-  Semaphore
+  Semaphore,
+  Serializer
 } from './shared';
 
 
