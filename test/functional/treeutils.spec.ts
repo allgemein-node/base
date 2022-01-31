@@ -5,7 +5,7 @@ import {TreeUtils} from '../../src/utils/TreeUtils';
 import {JsonUtils} from '../../src/utils/JsonUtils';
 
 
-@suite('treeutils')
+@suite('functional/treeutils')
 class TreeutilsSpec {
 
   @test
