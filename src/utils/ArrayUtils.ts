@@ -68,7 +68,7 @@ export class ArrayUtils {
     const sourceArray = parent.length === 0 ? source : get(source, parentLocation, undefined);
     if (isArray(sourceArray)) {
       // source array exists check if value present
-      const exists = sourceArray.find((y: any) => isEqual(x, x.value));
+      const exists = sourceArray.find((y: any) => isEqual(y, x.value));
       if (!exists) {
         // add missing value
         const position = sourceArray.length;

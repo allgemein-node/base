@@ -116,6 +116,17 @@ class ArrayUtilsSpec {
     ]);
   }
 
+
+  @test
+  async 'merge two mapping objects - should do notthing if value in array'() {
+    const src: any = {key: ['test']};
+    const dest: any = {key: ['test']};
+    const changes = ArrayUtils.merge(src, dest);
+    expect(src).to.be.deep.include(dest);
+    expect(changes).to.be.deep.eq([]);
+  }
+
+
   @test
   async 'merge two mapping objects - structure collision between object and array'() {
     const src: any = {key: {test: 'test'}};
