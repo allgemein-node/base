@@ -18,7 +18,7 @@ export {NotSupportedError} from './exceptions/NotSupportedError';
 
 export {ClassUtils} from './utils/ClassUtils';
 export {CryptUtils} from './utils/CryptUtils';
-export {TreeUtils} from './utils/TreeUtils';
+export {TreeUtils, WalkValues} from './utils/TreeUtils';
 export {JsonUtils} from './utils/JsonUtils';
 export {Serializer} from './utils/Serializer';
 

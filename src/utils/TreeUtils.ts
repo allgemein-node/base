@@ -33,7 +33,7 @@ export class TreeUtils {
           }
         });
       } else if (isObjectLike(obj)) {
-        keys(obj).forEach(_key => {
+        keys(obj).forEach((_key: string) => {
           const isLeaf = !isArray(obj[_key]) && !isObjectLike(obj[_key]);
           fn({
             value: obj[_key],
