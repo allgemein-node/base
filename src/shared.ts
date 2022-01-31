@@ -21,7 +21,7 @@ export {CryptUtils} from './utils/CryptUtils';
 export {TreeUtils, WalkValues} from './utils/TreeUtils';
 export {JsonUtils} from './utils/JsonUtils';
 export {Serializer} from './utils/Serializer';
-export {ArrayUtils} from './utils/ArrayUtils';
+export {ArrayUtils, IMergeChange} from './utils/ArrayUtils';
 
 export {LockFactory} from './locking/LockFactory';
 export {Semaphore} from './locking/Semaphore';

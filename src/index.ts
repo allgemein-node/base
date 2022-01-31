@@ -29,7 +29,8 @@ export {
   MetadataStorage,
   LockFactory,
   Semaphore,
-  Serializer
+  Serializer,
+  IMergeChange
 } from './shared';
 
 

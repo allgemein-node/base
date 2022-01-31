@@ -29,6 +29,7 @@ export {
   MetadataStorage,
   Semaphore,
   LockFactory,
-  Serializer
+  Serializer,
+  IMergeChange
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

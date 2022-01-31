@@ -1,10 +1,19 @@
 import {TreeUtils, WalkValues} from './TreeUtils';
 import {clone, get, isArray, isEqual, isNull, isNumber, isObjectLike, isUndefined, set} from 'lodash';
 
+export interface IMergeChange {
+  type: 'missing' | 'value' | 'push' | 'create-push';
+  key: string;
+  src?: any;
+  dst?: any;
+  position?: number;
+  value?: any;
+}
+
 export class ArrayUtils {
 
   static merge(source: any, dest: any) {
-    const changes: any[] = [];
+    const changes: IMergeChange[] = [];
     TreeUtils.walk(dest, (x: WalkValues) => {
       // new sub-property
       const location = x.location.join('.');
@@ -51,7 +60,7 @@ export class ArrayUtils {
   }
 
 
-  private static mergeHandleArray(source: any, x: WalkValues, changes: any[]) {
+  private static mergeHandleArray(source: any, x: WalkValues, changes: IMergeChange[]) {
     // array element
     const parent = clone(x.location);
     parent.pop();
