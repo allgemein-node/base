@@ -2,6 +2,7 @@ export {
   JsonUtils,
   TreeUtils,
   WalkValues,
+  ArrayUtils,
   CryptUtils,
   ClassUtils,
   NotSupportedError,
