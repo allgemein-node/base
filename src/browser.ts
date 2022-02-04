@@ -30,6 +30,7 @@ export {
   Semaphore,
   LockFactory,
   Serializer,
-  IMergeChange
+  IMergeChange,
+  isPromiseLike
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

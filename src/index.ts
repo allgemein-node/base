@@ -30,7 +30,8 @@ export {
   LockFactory,
   Semaphore,
   Serializer,
-  IMergeChange
+  IMergeChange,
+  isPromiseLike
 } from './shared';
 
 
