@@ -1,6 +1,9 @@
 export {
   C_DEFAULT, __SOURCE__, C_CONSOLE, C_DEBUG, C_ERROR, C_INFO, C_TRACE, C_WARN, ISO8601, StringOrFunction
 } from './Constants';
+
+export {isPromiseLike} from './fns/isPromiseLike';
+
 export {MetaArgs} from './MetaArgs';
 export {MetadataStorage} from './MetadataStorage';
 
@@ -25,4 +28,5 @@ export {ArrayUtils, IMergeChange} from './utils/ArrayUtils';
 
 export {LockFactory} from './locking/LockFactory';
 export {Semaphore} from './locking/Semaphore';
+
 
