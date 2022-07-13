@@ -101,6 +101,8 @@ export class ClassLoader {
           };
           return cls;
         } catch (e) {
+          console.error('Error occured on file ' + file);
+          console.error(e);
           return null;
         }
       }));
