@@ -32,7 +32,7 @@ export class ClassUtils {
   static getSource(cls: Function): string {
     let _path = null;
     if (Reflect && Reflect['getOwnMetadata']) {
-      _path = Reflect['getOwnMetadata'](__SOURCE__, cls);
+      _path = Reflect['getOwnMetadata'](__SOURCE__, cls as object);
     } else {
       _path = cls[__SOURCE__] ? cls[__SOURCE__] : null;
     }
