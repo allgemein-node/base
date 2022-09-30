@@ -3,6 +3,8 @@ import {suite, test} from '@testdeck/mocha';
 import 'reflect-metadata';
 import {TreeUtils} from '../../src/utils/TreeUtils';
 import {JsonUtils} from '../../src/utils/JsonUtils';
+import {isArray, isFunction} from 'lodash';
+import {ClassLoader} from '../../src';
 
 
 @suite('functional/treeutils')
@@ -17,6 +19,8 @@ class TreeutilsSpec {
     expect(TreeUtils.isLeaf(null)).to.be.true;
     expect(TreeUtils.isLeaf(undefined)).to.be.true;
     expect(TreeUtils.isLeaf(new Date())).to.be.true;
+    expect(TreeUtils.isLeaf(JsonUtils)).to.be.true;
+
     expect(TreeUtils.isLeaf({})).to.be.false;
     expect(TreeUtils.isLeaf([])).to.be.false;
     expect(TreeUtils.isLeaf(new Object())).to.be.false;
@@ -123,4 +127,37 @@ class TreeutilsSpec {
     // console.log(inspect(c, null, 10));
     expect(c).to.be.deep.eq(null);
   }
+
+
+  @test
+  'tree with function stubs'() {
+    const data = {data: JsonUtils};
+    TreeUtils.walk(data, x => {
+      if (isFunction(x.value)) {
+        if (isArray(x.parent)) {
+          x.parent[x.index] = ClassLoader.getClassName(x.value);
+        } else {
+          x.parent[x.key] = ClassLoader.getClassName(x.value);
+        }
+      }
+    });
+    expect(data).to.deep.eq({data: 'JsonUtils'});
+  }
+
+  @test
+  'tree with function stubs in array'() {
+    const data = {data: [JsonUtils]};
+    TreeUtils.walk(data, x => {
+      if (isFunction(x.value)) {
+        if (isArray(x.parent)) {
+          x.parent[x.index] = ClassLoader.getClassName(x.value);
+        } else {
+          x.parent[x.key] = ClassLoader.getClassName(x.value);
+        }
+      }
+    });
+    expect(data).to.deep.eq({data: ['JsonUtils']});
+  }
+
+
 }
