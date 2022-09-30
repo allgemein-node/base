@@ -9,6 +9,20 @@ import {JsonUtils} from '../../src/utils/JsonUtils';
 class TreeutilsSpec {
 
   @test
+  async 'is leaf'() {
+    expect(TreeUtils.isLeaf(1)).to.be.true;
+    expect(TreeUtils.isLeaf(1.1)).to.be.true;
+    expect(TreeUtils.isLeaf('hallo')).to.be.true;
+    expect(TreeUtils.isLeaf(true)).to.be.true;
+    expect(TreeUtils.isLeaf(null)).to.be.true;
+    expect(TreeUtils.isLeaf(undefined)).to.be.true;
+    expect(TreeUtils.isLeaf(new Date())).to.be.true;
+    expect(TreeUtils.isLeaf({})).to.be.false;
+    expect(TreeUtils.isLeaf([])).to.be.false;
+    expect(TreeUtils.isLeaf(new Object())).to.be.false;
+  }
+
+  @test
   async 'tree sync walker'() {
     const tree: any = {
       str: 'y',
