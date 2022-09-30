@@ -1,4 +1,5 @@
-import {isArray, isObjectLike, keys} from 'lodash';
+import {isArray, isDate, isNull, isNumber, isObject, isObjectLike, isString, keys} from 'lodash';
+import {isNumberObject, isStringObject} from 'util/types';
 
 export interface WalkValues {
   value: any;
@@ -11,6 +12,9 @@ export interface WalkValues {
 
 export class TreeUtils {
 
+  static isLeaf(el: any) {
+    return !(isArray(el) || (isObject(el) && !(isNumberObject(el) || isStringObject(el) || isDate(el))));
+  }
 
   static walk(root: any, fn: (x: WalkValues) => void) {
     function walk(obj: any, parent: any = null, key: string | number = null, location: any[] = []) {
@@ -19,7 +23,7 @@ export class TreeUtils {
       }
       if (isArray(obj)) {
         obj.forEach((el: any, j: number) => {
-          const isLeaf = !isArray(el) && !isObjectLike(el);
+          const isLeaf = TreeUtils.isLeaf(el);
           fn({
             value: el,
             key: key,
@@ -34,7 +38,8 @@ export class TreeUtils {
         });
       } else if (isObjectLike(obj)) {
         keys(obj).forEach((_key: string) => {
-          const isLeaf = !isArray(obj[_key]) && !isObjectLike(obj[_key]);
+          const isLeaf = TreeUtils.isLeaf(obj[_key]);
+          // const isLeaf = !isArray(obj[_key]) && !isObjectLike(obj[_key]);
           fn({
             value: obj[_key],
             key: _key,
