@@ -25,6 +25,7 @@ export {TreeUtils, WalkValues} from './utils/TreeUtils';
 export {JsonUtils} from './utils/JsonUtils';
 export {Serializer} from './utils/Serializer';
 export {ArrayUtils, IMergeChange} from './utils/ArrayUtils';
+export {Interpolation} from './utils/Interpolation';
 
 export {LockFactory} from './locking/LockFactory';
 export {Semaphore} from './locking/Semaphore';

@@ -31,6 +31,7 @@ export {
   LockFactory,
   Serializer,
   IMergeChange,
-  isPromiseLike
+  isPromiseLike,
+  Interpolation
 } from './shared';
 export {PlatformUtils} from './utils/PlatformUtilsBrowser';

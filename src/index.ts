@@ -31,7 +31,8 @@ export {
   Semaphore,
   Serializer,
   IMergeChange,
-  isPromiseLike
+  isPromiseLike,
+  Interpolation
 } from './shared';
 
 
